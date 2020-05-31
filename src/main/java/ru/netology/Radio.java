@@ -66,7 +66,7 @@ public class Radio {
     //кнопка next:
     public void nextStationButton() {
         if (currentStation == maxStation) {
-            this.currentStation = 0;
+            this.currentStation = maxStation;
         }
         this.currentStation++;
     }
@@ -74,9 +74,9 @@ public class Radio {
     //кнопка prev:
     public void prevStationButton() {
         if (currentStation == minStation) {
-            this.currentStation = 9;
+            this.currentStation = maxStation;
         }
-        this.currentStation++;
+        this.currentStation--;
     }
 
     //увеличить громкость на 1:
