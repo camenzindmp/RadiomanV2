@@ -23,6 +23,14 @@ class RadioTest {
     }
 
     @Test
+        //выставить номер радиостанции ниже допустимого предела;
+    void setCurrentStationBelowTheLowerBound() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(-1);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
         //следующая станция в пределах от 0 до 9;
     void nextStationButton() {
         Radio radio = new Radio();
@@ -31,7 +39,7 @@ class RadioTest {
     }
 
     @Test
-        //следующая станция выше 9; ПРОБЛЕМА
+        //следующая станция выше 9;
     void nextStationButtonOverTheUpperBound() {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
@@ -50,7 +58,7 @@ class RadioTest {
 
 
     @Test
-        //предыдущая станция ниже 0; ПРОБЛЕМА
+        //предыдущая станция ниже 0;
     void prevStationButtonBelowTheLowerBound() {
         Radio radio = new Radio();
         radio.prevStationButton();

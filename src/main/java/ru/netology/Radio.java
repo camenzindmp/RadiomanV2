@@ -66,7 +66,8 @@ public class Radio {
     //кнопка next:
     public void nextStationButton() {
         if (currentStation == maxStation) {
-            this.currentStation = maxStation;
+            this.currentStation = minStation;
+            return;
         }
         this.currentStation++;
     }
@@ -75,6 +76,7 @@ public class Radio {
     public void prevStationButton() {
         if (currentStation == minStation) {
             this.currentStation = maxStation;
+            return;
         }
         this.currentStation--;
     }
