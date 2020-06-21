@@ -30,6 +30,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -50,7 +51,7 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>check</id>
+                        <id>jacoco-check</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
@@ -59,13 +60,9 @@
                             <rules>
                                 <rule>
                                     <element>METHOD</element>
-                                    <includes>
-                                        <include>nextStationButton</include>
-                                        <include>prevStationButton</include>
-                                    </includes>
                                     <limits>
                                         <limit>
-                                            <counter>COMPLEXITY</counter>
+                                            <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
                                             <minimum>1.0</minimum>
                                         </limit>

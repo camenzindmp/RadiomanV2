@@ -7,6 +7,29 @@ public class Radio {
     private int minStation = 0;
     private int maxVolume = 10;
     private int minVolume = 0;
+    private int stationAmount;
+
+
+    public Radio(int currentStation, int currentVolume, int maxStation, int minStation, int maxVolume, int minVolume, int stationAmount) {
+        this.currentStation = currentStation;
+        this.currentVolume = currentVolume;
+        this.maxStation = stationAmount;
+        this.minStation = minStation;
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+        this.stationAmount = stationAmount;
+    }
+
+    public Radio() {
+    }
+
+    public int getStationAmount() {
+        return stationAmount;
+    }
+    // установить количество радиостанций;
+    public void setStationAmount(int stationAmount) {
+        this.stationAmount = stationAmount;
+    }
 
     public int getCurrentStation() {
         return currentStation;
