@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
+
 public class Radio {
     private int currentStation;
     private int currentVolume;

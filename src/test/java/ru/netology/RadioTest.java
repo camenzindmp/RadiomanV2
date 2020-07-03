@@ -84,7 +84,7 @@ class RadioTest {
     }
 
     @Test
-        //выставить номер радиостанции с цифрового пульта выше допустимых пределов;
+        //выставить номер радиостанции с цифрового пульта ниже допустимых пределов;
     void setCurrentStationBelowBound() {
         radio.setCurrentStation(-1);
         assertEquals(0, radio.getCurrentStation());
