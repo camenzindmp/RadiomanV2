@@ -1,3 +1,4 @@
+
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
@@ -5,26 +6,52 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    Radio radio = new Radio(0, 0, 10, 0, 100, 0);
 
     @Test
-        //следующая станция;
+        //выставить номер радиостанции в допустимых пределах;
+    void setCurrentStation() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(5);
+        assertEquals(5, radio.getCurrentStation());
+    }
+
+    @Test
+        //выставить номер радиостанции выше допустимого предела;
+    void setCurrentStationOverTheUpperBound() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(11);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+        //выставить номер радиостанции ниже допустимого предела;
+    void setCurrentStationBelowTheLowerBound() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(-1);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+        //следующая станция в пределах от 0 до 9;
     void nextStationButton() {
+        Radio radio = new Radio(10);
         radio.nextStationButton();
         assertEquals(1, radio.getCurrentStation());
     }
 
     @Test
-        //следующая станция выше максимума;
+        //следующая станция выше 9;
     void nextStationButtonOverTheUpperBound() {
+        Radio radio = new Radio(10);
         radio.setCurrentStation(10);
         radio.nextStationButton();
         assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
-        //предыдущая станция;
+        //предыдущая станция в пределах от 0 до 9;
     void prevStationButton() {
+        Radio radio = new Radio(10);
         radio.setCurrentStation(5);
         radio.prevStationButton();
         assertEquals(4, radio.getCurrentStation());
@@ -32,8 +59,9 @@ class RadioTest {
 
 
     @Test
-        //предыдущая станция ниже минимума;
+        //предыдущая станция ниже 0;
     void prevStationButtonBelowTheLowerBound() {
+        Radio radio = new Radio(10);
         radio.prevStationButton();
         assertEquals(10, radio.getCurrentStation());
     }
@@ -42,6 +70,7 @@ class RadioTest {
     @Test
         //увеличить громкость на 1 в допустимых пределах;
     void volumePlusButton() {
+        Radio radio = new Radio(10);
         radio.volumePlusButton();
         assertEquals(1, radio.getCurrentVolume());
     }
@@ -49,14 +78,16 @@ class RadioTest {
     @Test
         //увеличить громкость на 1 выше верхней границы;
     void volumePlusButtonOverTheUpperBound() {
-        radio.setCurrentVolume(100);
+        Radio radio = new Radio(10);
+        radio.setCurrentVolume(10);
         radio.volumePlusButton();
-        assertEquals(100, radio.getCurrentVolume());
+        assertEquals(10, radio.getCurrentVolume());
     }
 
     @Test
         //уменьшить громкость на 1 в допустимых пределах;
     void volumeMinusButton() {
+        Radio radio = new Radio(10);
         radio.setCurrentVolume(5);
         radio.volumeMinusButton();
         assertEquals(4, radio.getCurrentVolume());
@@ -65,28 +96,8 @@ class RadioTest {
     @Test
         //уменьшить громкость на 1 ниже нижней границы;
     void volumeMinusButtonBelowLowerBound() {
+        Radio radio = new Radio(10);
         radio.volumeMinusButton();
         assertEquals(0, radio.getCurrentVolume());
-    }
-
-    @Test
-        //выставить номер радиостанции с цифрового пульта в допустимых пределах;
-    void setCurrentStation() {
-        radio.setCurrentStation(10);
-        assertEquals(10, radio.getCurrentStation());
-    }
-
-    @Test
-        //выставить номер радиостанции с цифрового пульта выше допустимых пределов;
-    void setCurrentStationOverBound() {
-        radio.setCurrentStation(12);
-        assertEquals(0, radio.getCurrentStation());
-    }
-
-    @Test
-        //выставить номер радиостанции с цифрового пульта ниже допустимых пределов;
-    void setCurrentStationBelowBound() {
-        radio.setCurrentStation(-1);
-        assertEquals(0, radio.getCurrentStation());
     }
 }
